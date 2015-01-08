@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+	<title></title>
+		<link href="bootstrap.min.css" rel="stylesheet" />
+		<link href="week-days-selector.css" rel="stylesheet" />
+		
+		<script src="jquery.min.js"></script>
+		<script src="week-days-selector.js"></script>
+		
+		<script>
+		$(function () {
+			var data = [{
+					value: 1,
+					title: 'Sunday',
+					short: 'Su'
+				},
+				{
+					value: 2,
+					title: 'Monday',
+					short: 'M'
+				},
+				{
+					value: 4,
+					title: 'Tuesday',
+					short: 'T'
+				},
+				{
+					value: 8,
+					title: 'Wednesday',
+					short: 'W'
+				},
+				{
+					value: 16,
+					title: 'Thursday',
+					short: 'Th'
+				},
+				{
+					value: 32,
+					title: 'Friday',
+					short: 'F'
+				},
+				{
+					value: 64,
+					title: 'Saturday',
+					short: 'S'
+				}],
+			labels = {
+					none: ' Select Days',
+					all: 'All Days',
+				};
+		
+			weekDaysSelector1 = new WeekDaysSelector('#weekDaysSelector1', {
+				labels: labels,
+				data: data
+			});
+			
+			//selected values, disabled
+			weekDaysSelector2 = new WeekDaysSelector('#weekDaysSelector2', {
+				labels: labels,
+				isDisabled: true,
+				selectedValue: 14,
+				data: data
+			});
+			
+			//events demonstation
+			weekDaysSelector3 = new WeekDaysSelector('#weekDaysSelector3', {
+				labels: labels,
+				onChange: function (val, isChecked) {
+					alert('val:' + val + ' isChecked:' + isChecked);
+				},
+				onHide: function (val) {
+					alert('hide:' + val);
+				},
+				onShow: function (val) {
+					alert('show:' + val);
+				},
+				data: data
+			});
+		});
+	</script>
+</head>
+<body>
+<h2>Week Days Selector</h2>
+<a onclick="weekDaysSelector1.disable()" href="javascipt:void(0)">disable</a> | 
+<a onclick="weekDaysSelector1.enable()" href="javascipt:void(0)">enable</a> | 
+<a onclick="weekDaysSelector1.setValue(0)" href="javascipt:void(0)">deselect all</a> |
+<a onclick="weekDaysSelector1.setValue(127)" href="javascipt:void(0)">select all</a>
+
+<div id="weekDaysSelector1"></div>
+
+<h3>Disabled, Selected Values</h3>
+<div id="weekDaysSelector2"></div>
+
+<h3>Events</h3>
+<div id="weekDaysSelector3"></div>
+</body>
+</html>

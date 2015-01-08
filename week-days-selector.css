@@ -1,0 +1,14 @@
+.week-day-selector li a {
+	padding: 0;
+	text-decoration: none;
+}
+
+.week-day-selector li label.checkbox {
+	padding: 7px 10px 5px 25px;
+	margin: 0;
+	cursor: pointer;
+}
+
+.week-day-selector ul {
+	min-width: 150px;
+}
